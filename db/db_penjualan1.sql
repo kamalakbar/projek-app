@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Mar 2020 pada 13.05
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.2.28
+-- Generation Time: Dec 11, 2023 at 01:46 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_penjualan`
+-- Database: `db_penjualan1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barang`
+-- Table structure for table `barang`
 --
 
 CREATE TABLE `barang` (
@@ -36,21 +35,23 @@ CREATE TABLE `barang` (
   `harga_jual` varchar(100) DEFAULT NULL,
   `stok` int(11) DEFAULT NULL,
   `satuan` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `barang`
+-- Dumping data for table `barang`
 --
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `harga_beli`, `harga_jual`, `stok`, `satuan`) VALUES
-(1, '53525585', 'Telur', '10000', '12500', 10, 'kg'),
-(2, '90598509', 'Kopi Kapal Api', '1500', '1750', 14, 'sachet'),
-(4, '33602675', 'Gula Pasir', '7500', '8000', 14, 'kg');
+(2, '90598509', 'Trekking Pole', '90000', '150000', 17, 'pcs'),
+(4, '33602675', 'Tenda Kaps 4+1person', '1100000', '1500000', 14, 'pcs'),
+(5, '77920702', 'Tas Carrier Gunung 60L', '900000', '1100000', 19, 'pcs'),
+(6, '60579770', 'Tas Carrier Gunung 50L', '750000', '950000', 19, 'pcs'),
+(7, '72090550', 'Tenda Kaps 2+1person', '500000', '700000', 9, 'pcs');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_toko`
+-- Table structure for table `data_toko`
 --
 
 CREATE TABLE `data_toko` (
@@ -59,19 +60,19 @@ CREATE TABLE `data_toko` (
   `nama_pemilik` varchar(80) DEFAULT NULL,
   `no_telepon` varchar(15) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `data_toko`
+-- Dumping data for table `data_toko`
 --
 
 INSERT INTO `data_toko` (`id`, `nama_toko`, `nama_pemilik`, `no_telepon`, `alamat`) VALUES
-(1, 'Toko Maju Jaya', 'Nugroho', '081299764535', 'Sidareja');
+(1, 'Toko Outdoor Ilal', 'Ilal', '085719335588', 'Jl.Slipi Dalam I No 24 , Slipi, Palmerah , Jakarta Barat, Jakarta.');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_penjualan`
+-- Table structure for table `detail_penjualan`
 --
 
 CREATE TABLE `detail_penjualan` (
@@ -81,24 +82,23 @@ CREATE TABLE `detail_penjualan` (
   `jumlah_barang` int(11) DEFAULT NULL,
   `satuan` varchar(20) DEFAULT NULL,
   `sub_total` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `detail_penjualan`
+-- Dumping data for table `detail_penjualan`
 --
 
 INSERT INTO `detail_penjualan` (`no_penjualan`, `nama_barang`, `harga_barang`, `jumlah_barang`, `satuan`, `sub_total`) VALUES
-('PJ1584356033', 'Telur', '12500', 1, 'kg', '12500'),
-('PJ1584359090', 'Telur', '12500', 9, 'kg', '112500'),
-('PJ1584359090', 'Gula Pasir', '8000', 5, 'kg', '40000'),
-('PJ1584359090', 'Kopi Kapal Api', '1750', 5, 'sachet', '8750'),
-('PJ1584359556', 'Kopi Kapal Api', '1750', 1, 'sachet', '1750'),
-('PJ1584359556', 'Gula Pasir', '8000', 1, 'kg', '8000');
+('PJ1702147873', 'Tas Carrier Gunung 60L', '1100000', 1, 'pcs', '1100000'),
+('PJ1702147914', 'Tas Carrier Gunung 50L', '950000', 1, 'pcs', '950000'),
+('PJ1702147933', 'Tenda Kaps 2+1person', '700000', 1, 'pcs', '700000'),
+('PJ1702147990', 'Trekking Pole', '150000', 2, 'pcs', '300000'),
+('PJ1702148009', 'Tenda Kaps 4+1person', '1500000', 1, 'pcs', '1500000');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kasir`
+-- Table structure for table `kasir`
 --
 
 CREATE TABLE `kasir` (
@@ -107,19 +107,20 @@ CREATE TABLE `kasir` (
   `nama_kasir` varchar(100) DEFAULT NULL,
   `username_kasir` varchar(20) DEFAULT NULL,
   `password_kasir` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `kasir`
+-- Dumping data for table `kasir`
 --
 
 INSERT INTO `kasir` (`id`, `kode_kasir`, `nama_kasir`, `username_kasir`, `password_kasir`) VALUES
-(2, 'KASIR - 58', 'Fakhrul', 'KSR58', 'pwd_fakhrul');
+(4, 'KASIR - 67', 'mamskuy', 'KSR67', 'pwd_mamskuy'),
+(5, 'KASIR - 40', 'abi', 'KSR40', 'pwd_abi');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengguna`
+-- Table structure for table `pengguna`
 --
 
 CREATE TABLE `pengguna` (
@@ -128,19 +129,20 @@ CREATE TABLE `pengguna` (
   `nama_pengguna` varchar(100) DEFAULT NULL,
   `username_pengguna` varchar(20) DEFAULT NULL,
   `password_pengguna` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pengguna`
+-- Dumping data for table `pengguna`
 --
 
 INSERT INTO `pengguna` (`id`, `kode_pengguna`, `nama_pengguna`, `username_pengguna`, `password_pengguna`) VALUES
-(1, 'PGN17', 'Nugrohoo', 'nugrohoff', 'pwd_nugroho');
+(2, 'PENGGUNA -', 'dmonk', 'dmonk', 'pwd_dmonk'),
+(4, 'PENGGUNA -', 'ilal', 'ilal', 'pwd_ilal');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penjualan`
+-- Table structure for table `penjualan`
 --
 
 CREATE TABLE `penjualan` (
@@ -150,84 +152,86 @@ CREATE TABLE `penjualan` (
   `tgl_penjualan` varchar(20) DEFAULT NULL,
   `jam_penjualan` varchar(20) DEFAULT NULL,
   `total` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `penjualan`
+-- Dumping data for table `penjualan`
 --
 
 INSERT INTO `penjualan` (`id`, `no_penjualan`, `nama_kasir`, `tgl_penjualan`, `jam_penjualan`, `total`) VALUES
-(1, 'PJ1584356033', 'Nugrohoo', '16/03/2020', '17:53:53', 12500),
-(2, 'PJ1584359090', 'Nugrohoo', '16/03/2020', '18:44:50', 161250),
-(3, 'PJ1584359556', 'nugroho', '16/03/2020', '18:52:36', 9750);
+(5, 'PJ1702147873', 'abi', '10/12/2023', '01:51:13', 1100000),
+(6, 'PJ1702147914', 'abi', '10/12/2023', '01:51:54', 950000),
+(7, 'PJ1702147933', 'abi', '10/12/2023', '01:52:13', 700000),
+(8, 'PJ1702147990', 'mamskuy', '10/12/2023', '01:53:10', 300000),
+(9, 'PJ1702148009', 'mamskuy', '10/12/2023', '01:53:29', 1500000);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `barang`
+-- Indexes for table `barang`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `data_toko`
+-- Indexes for table `data_toko`
 --
 ALTER TABLE `data_toko`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kasir`
+-- Indexes for table `kasir`
 --
 ALTER TABLE `kasir`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pengguna`
+-- Indexes for table `pengguna`
 --
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `penjualan`
+-- Indexes for table `penjualan`
 --
 ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `barang`
+-- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `data_toko`
+--
+ALTER TABLE `data_toko`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `kasir`
+--
+ALTER TABLE `kasir`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `pengguna`
+--
+ALTER TABLE `pengguna`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `data_toko`
---
-ALTER TABLE `data_toko`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `kasir`
---
-ALTER TABLE `kasir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `pengguna`
---
-ALTER TABLE `pengguna`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `penjualan`
+-- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
