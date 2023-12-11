@@ -3,7 +3,7 @@
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
-				<div class="sidebar-brand-text mx-3">Toko Outdoor Ilal <sup></sup></div>
+				<div class="sidebar-brand-text mx-3">Toko Outdoor <sup>Ilal</sup></div>
 			</a>
 			<hr class="sidebar-divider my-0">
 			<li class="nav-item <?= $aktif == 'dashboard' ? 'active' : '' ?>">
